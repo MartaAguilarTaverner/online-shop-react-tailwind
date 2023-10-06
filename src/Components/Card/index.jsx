@@ -1,16 +1,16 @@
 
 
-const Card = () => {
+const Card = ({ item }) => {
   return(
-    <div className="bg-white cursor-pointer w-56 h-60 rounded-lg">
+    <div className="bg-white border border-slate-300 hover:border-purple-300 cursor-pointer w-60 h-80 rounded-lg m-2 p-4">
       <figure className="relative mb-2 w-full h-4/5">
-        <span className="absolute bottom-0 left-0 bg-white/60 rounded-lg text-black text-xs m-2 px-3 py-0.5">Electronics</span>
-        <img className="w-full h-full object-cover rounded-lg" src="https://images.pexels.com/photos/3394654/pexels-photo-3394654.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="headphones" />
-        <button className="absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1">+</button>
+        <span className="absolute bottom-0 left-0 bg-purple-300/50 rounded-lg text-black text-xs m-2 px-3 py-0.5">{item.category}</span>
+        <img className="w-full h-full object-scale-down rounded-lg" src={item.image} alt={item.title}/>
+        <button className="absolute top-0 right-0 flex justify-center items-center bg-purple-200 w-6 h-6 rounded-full m-2 p-1">+</button>
       </figure>
       <p className="flex justify-between">
-        <span className="text-sm font-light">Headphones</span>
-        <span className="text-lg font-medium">300$</span>
+        <span className="text-sm font-light truncate hover:text-clip p-3 bx-2">{item.title}...</span>
+        <span className="text-lg font-semibold p-2 bx-2">{item.price}$</span>
       </p>
     </div>
   )

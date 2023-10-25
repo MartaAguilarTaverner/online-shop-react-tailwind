@@ -1,8 +1,14 @@
+import { useContext } from 'react';
+
+import { ShoppingCartContext } from '../../Context';
+
 import { NavLink } from 'react-router-dom';
 
 import './navbar.css';
 
 const NavBar = () => {
+  const context = useContext(ShoppingCartContext);
+
   const activeStyle = 'underline underline-offset-4';
   return (
     <nav className='flex justify-between items-center fixed z-10 top-0 w-full py-5 px-8 text-sm font-light'>
@@ -20,10 +26,26 @@ const NavBar = () => {
         </li>
         <li>
           <NavLink
-            to='/clothes'
+            to='/men'
             className={({ isActive}) =>
               isActive ? activeStyle : undefined}>
-            Clothes
+            Men
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to='/women'
+            className={({ isActive}) =>
+              isActive ? activeStyle : undefined}>
+            Women
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to='/jewelry'
+            className={({ isActive}) =>
+              isActive ? activeStyle : undefined}>
+            Jewelry
           </NavLink>
         </li>
         <li>
@@ -32,30 +54,6 @@ const NavBar = () => {
             className={({ isActive}) =>
               isActive ? activeStyle : undefined}>
             Electronics
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to='/furnitures'
-            className={({ isActive}) =>
-              isActive ? activeStyle : undefined}>
-            Furnitures
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to='/toys'
-            className={({ isActive}) =>
-              isActive ? activeStyle : undefined}>
-            Toys
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to='/others'
-            className={({ isActive}) =>
-              isActive ? activeStyle : undefined}>
-            Others
           </NavLink>
         </li>
       </ul>
@@ -88,7 +86,7 @@ const NavBar = () => {
           </NavLink>
         </li>
         <li>
-          🛒 0
+          🛒 {context.count}
         </li>
       </ul>
     </nav>

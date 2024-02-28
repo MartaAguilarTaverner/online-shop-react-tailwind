@@ -1,7 +1,5 @@
 import { useContext } from 'react';
-
 import { ShoppingCartContext } from '../../Context';
-
 import { NavLink } from 'react-router-dom';
 
 import './navbar.css';

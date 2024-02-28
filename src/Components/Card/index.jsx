@@ -6,6 +6,7 @@ import { ShoppingCartContext } from "../../Context";
 //TODO ITEM FAKESTOREAPI
 const Card = ({ item }) => {
   const context = useContext(ShoppingCartContext)
+
   return(
     <div className="bg-white border border-slate-300 hover:border-purple-300 cursor-pointer w-60 h-80 rounded-lg m-2 p-4">
       <figure className="relative mb-2 w-full h-4/5">
@@ -20,9 +21,11 @@ const Card = ({ item }) => {
     </div>
   )
 };
+
 Card.propTypes = {
   item: PropTypes.object,
 }
+
 export default Card;
 
 //TODO PLATZIFAKESTOREAPI

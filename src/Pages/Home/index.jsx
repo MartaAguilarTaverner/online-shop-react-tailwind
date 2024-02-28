@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 
 import Layout from '../../Components/Layout';
 import Card from '../../Components/Card';
+import ProductDetail from '../../Components/ProductDetail';
 
 import './home.css';
 
@@ -43,6 +44,7 @@ function Home() {
             ))
           }
         </div>
+        <ProductDetail />
       </Layout>
   );
 }

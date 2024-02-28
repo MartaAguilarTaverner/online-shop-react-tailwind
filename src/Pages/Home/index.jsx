@@ -9,12 +9,21 @@ function Home() {
   const [items, setItems] = useState([]);
   const dataFetchRef = useRef(false);
 
+  //TODO FAKESTOREAPI
   const fetchProducts = async () => {
     const response = await fetch('https://fakestoreapi.com/products');
     const data = await response.json();
 
     setItems(data);
   };
+
+  //TODO PLATZIFAKESTOREAPI
+  /*const fetchProducts = async () => {
+    const response = await fetch('https://api.escuelajs.co/api/v1/products');
+    const data = await response.json();
+
+    setItems(data);
+  };*/
 
   useEffect(() => {
     if (!dataFetchRef.current) {

@@ -11,14 +11,17 @@ const NavBar = () => {
 
   const activeStyle = 'underline underline-offset-4';
   return (
-    <nav className='flex justify-between items-center fixed z-10 top-0 w-full py-5 px-8 text-sm font-light'>
+    <nav className='className flex justify-between items-center fixed z-10 top-0 w-full py-1 px-5 text-sm font-light className'>
       <ul className='flex items-center gap-3'>
         <li className='font-semibold text-lg'>
-          <NavLink to='/'>Shopi</NavLink>
+          <NavLink to='/'>
+              <img src='../../../public/logo-shop.png' className='img-logo' alt='Shoppy' />
+          </NavLink>
         </li>
         <li>
           <NavLink
             to='/'
+            id='word-navbar'
             className={({ isActive}) =>
               isActive ? activeStyle : undefined}>
             All
@@ -27,6 +30,7 @@ const NavBar = () => {
         <li>
           <NavLink
             to='/men'
+            id='word-navbar'
             className={({ isActive}) =>
               isActive ? activeStyle : undefined}>
             Men
@@ -35,6 +39,7 @@ const NavBar = () => {
         <li>
           <NavLink
             to='/women'
+            id='word-navbar'
             className={({ isActive}) =>
               isActive ? activeStyle : undefined}>
             Women
@@ -43,6 +48,7 @@ const NavBar = () => {
         <li>
           <NavLink
             to='/jewelry'
+            id='word-navbar'
             className={({ isActive}) =>
               isActive ? activeStyle : undefined}>
             Jewelry
@@ -51,6 +57,7 @@ const NavBar = () => {
         <li>
           <NavLink
             to='/electronics'
+            id='word-navbar'
             className={({ isActive}) =>
               isActive ? activeStyle : undefined}>
             Electronics
@@ -58,12 +65,13 @@ const NavBar = () => {
         </li>
       </ul>
       <ul className='flex items-center gap-3'>
-        <li className='text-black/60'>
+        <li className='text-black/60 font-medium'>
           marta@platzi.com
         </li>
         <li>
           <NavLink
             to='/my-orders'
+            id='word-navbar'
             className={({ isActive}) =>
               isActive ? activeStyle : undefined}>
             My Orders
@@ -72,6 +80,7 @@ const NavBar = () => {
         <li>
           <NavLink
             to='/my-account'
+            id='word-navbar'
             className={({ isActive}) =>
               isActive ? activeStyle : undefined}>
             My Account
@@ -80,6 +89,7 @@ const NavBar = () => {
         <li>
           <NavLink
             to='/sign-in'
+            id='word-navbar'
             className={({ isActive}) =>
               isActive ? activeStyle : undefined}>
             Sign In

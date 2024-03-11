@@ -9,10 +9,15 @@ import { ShoppingCartContext } from "../../Context";
 const Card = ({ item }) => {
   const context = useContext(ShoppingCartContext)
 
+  const showProduct = (productDetail) => {
+    context.openProductDetail();
+    context.setProductToShow(productDetail);
+  }
+
   return(
     <div
       className="bg-white border border-slate-300 hover:border-purple-300 cursor-pointer w-60 h-80 rounded-lg m-2 p-4"
-      onClick={() => context.openProductDetail()}>
+      onClick={() =>showProduct(item)}>
       <figure className="relative mb-2 w-full h-4/5">
         <span className="absolute bottom-0 left-0 bg-purple-300/50 rounded-lg text-black text-xs m-2 px-3 py-0.5">{item.category}</span>
         <img className="w-full h-full object-scale-down rounded-lg" src={item.image} alt={item.title}/>

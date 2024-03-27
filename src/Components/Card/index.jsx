@@ -14,10 +14,12 @@ const Card = ({ item }) => {
     context.setProductToShow(productDetail);
   }
 
-  const addProductsToCart = (productData) => {
-    context.setCount(context.count + 1)
+  const addProductsToCart = (event, productData) => {
+    event.stopPropagation();
+    context.setCount(context.count + 1);
     context.setShoppingCartProducts([...context.shoppingCartProducts, productData]);
-    context.openCheckoutSideMenu()
+    context.openCheckoutSideMenu();
+    context.closeProductDetail();
     console.log('Cart: ', context.shoppingCartProducts);
   }
 
@@ -30,11 +32,7 @@ const Card = ({ item }) => {
         <span className="absolute bottom-0 left-0 bg-purple-300/50 rounded-lg text-black text-xs m-2 px-3 py-0.5">{item.category}</span>
         <img className="w-full h-full object-scale-down rounded-lg" src={item.image} alt={item.title}/>
 
-        <button className="absolute top-0 right-0 flex justify-center items-center w-6 h-6 rounded-full p-1" onClick={(event) =>  addProductsToCart(event,
-
-
-
-          item)}><div className='mb-1'>
+        <button className="absolute top-0 right-0 flex justify-center items-center w-6 h-6 rounded-full p-1" onClick={(event) =>  addProductsToCart(event,item)}><div className='mb-1'>
 
           <PlusCircleIcon className='h6 w-6 text-violet-700' ></PlusCircleIcon>
 

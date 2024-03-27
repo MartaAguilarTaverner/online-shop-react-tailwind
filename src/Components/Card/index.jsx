@@ -20,7 +20,7 @@ const Card = ({ item }) => {
     context.setShoppingCartProducts([...context.shoppingCartProducts, productData]);
     context.openCheckoutSideMenu();
     context.closeProductDetail();
-    console.log('Cart: ', context.shoppingCartProducts);
+
   }
 
   return(

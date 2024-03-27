@@ -23,7 +23,7 @@ export const  ShoppingCartProvider = ({children}) => {
   const [productToShow, setProductToShow] = useState({});
 
   //ShoppingCart products added to Cart
-  const[shoppingCartProducts, setShoppingCartProducts] = useState([])
+  const[shoppingCartProducts, setShoppingCartProducts] = useState([]);
 
   return (
     <ShoppingCartContext.Provider value={{

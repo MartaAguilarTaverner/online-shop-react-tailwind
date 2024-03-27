@@ -20,7 +20,7 @@ const context = useContext(ShoppingCartContext);
         <img className=' h-72 p-3'  src={context.productToShow.image} alt={context.productToShow.title} />
       </figure>
       <p className='flex flex-col p-6'>
-        <span className='font-extrabold text-xl mb-2'>${context.productToShow.price}</span>
+        <span className='font-extrabold text-xl mb-2'>{context.productToShow.price}$</span>
         <span className='font-medium text-lg underline mb-1'>{context.productToShow.title}</span>
         <span className='font-normal text-base'>{context.productToShow.description}</span>
       </p>

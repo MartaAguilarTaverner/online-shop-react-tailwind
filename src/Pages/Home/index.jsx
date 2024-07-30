@@ -36,7 +36,6 @@ function Home() {
 
   return (
       <Layout>
-        Home
         <div className="grid grid-cols-4 w-full max-w-screen-lg">
           {
             items?.map((item) => (

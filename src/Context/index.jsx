@@ -25,6 +25,55 @@ export const  ShoppingCartProvider = ({children}) => {
   //ShoppingCart products added to Cart
   const[shoppingCartProducts, setShoppingCartProducts] = useState([]);
 
+  //Cart options
+  const [shoppingCart, setShoppingCart] = useState([]);
+  const addToShoppingCart = (product, item) => {
+    const productInCart = shoppingCart.findIndex(item.id === product.id)
+    if (productInCart >= 0) {
+      const newShoppingCart = structuredClone(shoppingCart)
+      newShoppingCart[productInCart].quantity += 1
+      newShoppingCart[productInCart].totalQuantityPrice = newShoppingCart[productInCart].price * newShoppingCart[productInCart].quantity
+      setShoppingCart(newShoppingCart)
+
+      } else {
+        setShoppingCart(prevState => ([
+          ...prevState,
+          {
+            ...product,
+            quantity: 1,
+            totalQuantityPrice: product.price
+          }
+        ]))
+      }
+  }
+
+  const checkProductInShoppingCart = (product, item) => {
+    return shoppingCart.some(item.id === product.id)
+  }
+
+  const removeOneProductInShoppingCart = (product, item) => {
+    const productInCart = shoppingCart.findIndex(item.id === product.id)
+    if (productInCart >= 0) {
+      const newShoppingCart = structuredClone(shoppingCart)
+        if (newShoppingCart[productInCart].quantity !== 1) {
+          newShoppingCart[productInCart].quantity -= 1
+          newShoppingCart[productInCart].totalQuantityPrice = newShoppingCart[productInCart].price * newShoppingCart[productInCart].quantity
+          setShoppingCart(newShoppingCart);
+        }
+    }
+  }
+
+  const removeFromShoppingCart = (product) => {
+    setShoppingCart(prevState => prevState.filter(item => item.id !== product.id))
+  }
+
+  const clearShoppingCart = () => {
+    setShoppingCart()
+  }
+
+  const totalPrice = shoppingCart.reduce((sum, product) => sum + product.totalQuantityPrice, 0);
+
+
   return (
     <ShoppingCartContext.Provider value={{
       count,
@@ -34,11 +83,20 @@ export const  ShoppingCartProvider = ({children}) => {
       closeProductDetail,
       productToShow,
       setProductToShow,
-      shoppingCartProducts,
-      setShoppingCartProducts,
       checkoutSideMenuOpen,
       openCheckoutSideMenu,
-      closeCheckoutSideMenu
+      closeCheckoutSideMenu,
+      shoppingCartProducts,
+      setShoppingCartProducts,
+      shoppingCart,
+      addToShoppingCart,
+      checkProductInShoppingCart,
+      removeOneProductInShoppingCart,
+      removeFromShoppingCart,
+      clearShoppingCart,
+      totalPrice
+
+
 
     }}>
       {children}

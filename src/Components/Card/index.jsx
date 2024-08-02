@@ -1,4 +1,4 @@
-import { PlusCircleIcon, ShoppingCartIcon } from '@heroicons/react/24/solid';
+import { CheckCircleIcon, ShoppingCartIcon } from '@heroicons/react/24/solid';
 
 import PropTypes from 'prop-types';
 
@@ -22,14 +22,26 @@ const Card = ({ item }) => {
     context.closeProductDetail();
   }
 
-  const updateIcon = () => {
-    if (context.shoppingCartProducts.filter(product => product.id === item.id).length > 0 ) {
+  const updateIcon = (id) => {
+    const isInCart = context.shoppingCartProducts.filter(product => product.id === id).length > 0
+    if (isInCart) {
       return (
-          <PlusCircleIcon className='h6 w-6 text-violet-700' ></PlusCircleIcon>
+        <button className="absolute top-0 right-0 flex justify-center items-center w-6 h-6 rounded-full p-1">
+          <div className='mb-1'>
+            <CheckCircleIcon className='h6 w-6 text-green-700' ></CheckCircleIcon>
+          </div>
+
+        </button>
+
       )
     } else {
       return (
-          <ShoppingCartIcon className='h5 w-5 text-violet-700'></ShoppingCartIcon>
+        <button className="absolute top-0 right-0 flex justify-center items-center w-6 h-6 rounded-full p-1" onClick={(event) =>  addProductsToCart(event,item)}>
+          <div className='mb-1'>
+            <ShoppingCartIcon className='h5 w-5 text-violet-700'></ShoppingCartIcon>
+          </div>
+        </button>
+
       )
     }
   }
@@ -42,11 +54,7 @@ const Card = ({ item }) => {
       <figure className="relative mb-2 w-full h-4/5">
         <span className="absolute bottom-0 left-0 bg-purple-300/50 rounded-lg text-black text-xs m-2 px-3 py-0.5">{item.category}</span>
         <img className="w-full h-full object-scale-down rounded-lg" src={item.image} alt={item.title}/>
-        <button className="absolute top-0 right-0 flex justify-center items-center w-6 h-6 rounded-full p-1" onClick={(event) =>  addProductsToCart(event,item)}>
-          <div className='mb-1'>
             {updateIcon(item.id)}
-          </div>
-        </button>
       </figure>
 
       <p className="flex justify-between">

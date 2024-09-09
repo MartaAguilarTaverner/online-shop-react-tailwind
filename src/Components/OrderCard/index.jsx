@@ -22,11 +22,11 @@ const OrderCard = ({ id, image, title, price, handleDelete }) => {
 };
 
 OrderCard.propTypes = {
-  id: PropTypes.string,
+  id: PropTypes.number,
   image: PropTypes.string,
   title: PropTypes.string,
   price: PropTypes.number,
-  handleDelete: PropTypes.bool,
+  handleDelete: PropTypes.func,
 }
 
 export default OrderCard;

@@ -37,7 +37,7 @@ const handleDelete = (id) => {
         <div className='mt-5 mb-10 mr-3 ml-3'>
           <p className='flex justify-between items-center ml-10 mr-2'>
             <span className='font-semibold text-lg'>Total</span>
-            <span className='font-bold text-xl'>${totalPrice(context.shoppingCartProducts)} </span>
+            <span className='font-bold text-xl'> {totalPrice(context.shoppingCartProducts)}$ </span>
           </p>
         </div>
       </div>

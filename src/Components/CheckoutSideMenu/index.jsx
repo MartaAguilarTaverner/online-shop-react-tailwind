@@ -8,6 +8,7 @@ import { totalPrice } from '../../Utils';
 import OrderCard from '../OrderCard';
 
 import './checkoutSideMenu.css';
+import { Link } from 'react-router-dom';
 
 
 const CheckoutSideMenu = () => {
@@ -51,6 +52,8 @@ const handleCheckOut = () => {
           </p>
         </div>
         <div className='flex justify-center items-center my-3'>
+          <Link>
+          </Link>
           <button onClick={() => handleCheckOut()} className='w-1/2 py-3 text-violet-900 bg-violet-200 hover:bg-violet-300 rounded-md' >Checkout</button>
         </div>
     </aside>

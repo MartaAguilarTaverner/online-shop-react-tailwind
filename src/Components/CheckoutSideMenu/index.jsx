@@ -44,13 +44,13 @@ const handleCheckOut = () => {
       }
       </div >
 
-        <div className='mt-5 mb-10 mr-3 ml-3'>
-          <p className='flex justify-between items-center ml-10 mr-2'>
+        <div className='mt-5 mb-4 mr-3 ml-3 flex-1'>
+          <p className='flex justify-between items-center ml-5 mr-2'>
             <span className='font-semibold text-lg'>Total</span>
             <span className='font-bold text-xl'> {totalPrice(context.shoppingCartProducts)}$ </span>
           </p>
         </div>
-        <div className='flex justify-center items-center'>
+        <div className='flex justify-center items-center my-3'>
           <button onClick={() => handleCheckOut()} className='w-1/2 py-3 text-violet-900 bg-violet-200 hover:bg-violet-300 rounded-md' >Checkout</button>
         </div>
     </aside>

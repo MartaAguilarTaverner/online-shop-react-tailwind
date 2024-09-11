@@ -5,6 +5,11 @@ import PropTypes from 'prop-types';
 
 
 const OrderCard = ({ id, image, title, price, handleDelete }) => {
+let renderXMarkIcon
+if(handleDelete){
+  renderXMarkIcon = <XCircleIcon onClick={() => handleDelete(id)} className='h6 w-6 text-red-900' ></XCircleIcon>
+}
+
   return(
     <div className="flex justify-between items-center mt-4 mb-4 mr-4 ml-4" >
       <div className=" flex flex-col item-center ">
@@ -15,7 +20,7 @@ const OrderCard = ({ id, image, title, price, handleDelete }) => {
       </div>
       <div className="flex items-center ">
         <span className="text-lg font-medium mr-1">{price}$</span>
-        <XCircleIcon onClick={() => handleDelete(id)} className='h6 w-6 text-red-900' ></XCircleIcon>
+        {renderXMarkIcon}
       </div>
     </div>
   )

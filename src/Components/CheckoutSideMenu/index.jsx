@@ -1,14 +1,15 @@
 import { XCircleIcon } from '@heroicons/react/24/solid';
 
+import { Link } from 'react-router-dom';
 import { useContext } from 'react';
-import { ShoppingCartContext } from '../../Context';
 
+import { ShoppingCartContext } from '../../Context';
 import { totalPrice } from '../../Utils';
 
 import OrderCard from '../OrderCard';
 
 import './checkoutSideMenu.css';
-import { Link } from 'react-router-dom';
+
 
 
 const CheckoutSideMenu = () => {
@@ -22,11 +23,14 @@ const handleDelete = (id) => {
 const handleCheckOut = () => {
   const orderToAdd = {
     date: '01.02.2024',
-    products: context.shoppingCartProducts.lenght,
+    products: context.shoppingCartProducts,
+    totalProducts:context.shoppingCartProducts.lenght,
     totalPrice: totalPrice(context.shoppingCartProducts)
   }
   context.setOrder([...context.order, orderToAdd])
   context.setShoppingCartProducts([])
+  context.setCount(0);
+  context.closeCheckoutSideMenu();
 }
 
   return (
@@ -44,7 +48,6 @@ const handleCheckOut = () => {
         ))
       }
       </div >
-
         <div className='mt-5 mb-4 mr-3 ml-3 flex-1'>
           <p className='flex justify-between items-center ml-5 mr-2'>
             <span className='font-semibold text-lg'>Total</span>
@@ -52,9 +55,9 @@ const handleCheckOut = () => {
           </p>
         </div>
         <div className='flex justify-center items-center my-3'>
-          <Link>
+          <Link className='w-full flex justify-center items-center' to='/my-orders/last'>
+            <button onClick={() => handleCheckOut()} className='w-1/2 py-3 text-violet-900 bg-violet-200 hover:bg-violet-300 rounded-md' >Checkout</button>
           </Link>
-          <button onClick={() => handleCheckOut()} className='w-1/2 py-3 text-violet-900 bg-violet-200 hover:bg-violet-300 rounded-md' >Checkout</button>
         </div>
     </aside>
   )

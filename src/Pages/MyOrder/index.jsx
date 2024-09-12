@@ -1,4 +1,7 @@
+import { ArrowLeftCircleIcon } from '@heroicons/react/24/solid';
+
 import { useContext } from 'react';
+import { Link } from 'react-router-dom';
 
 import Layout from '../../Components/Layout';
 import OrderCard from '../../Components/OrderCard';
@@ -15,8 +18,13 @@ function MyOrder() {
 
   return (
       <Layout>
-        <div className='font-bold text-xl'>
-          My Order
+        <div className='flex items-center justify-between w-80 '>
+          <Link to='/my-orders' className='left-0'>
+            <ArrowLeftCircleIcon className='h-7 w-7 text-violet-700 cursor-pointer'></ArrowLeftCircleIcon>
+          </Link>
+          <div className='font-bold text-xl mr-9'>
+            My Order
+          </div>
         </div>
         <div className='flex flex-col w-80 '>
 

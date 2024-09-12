@@ -14,16 +14,15 @@ function MyOrders() {
 
   return (
       <Layout>
-        <div className='font-bold text-xl'>
+        <div className='font-bold text-xl mb-4'>
             My Orders
           </div>
         {
-          context.order.map((order, index) => {
-            <Link to={`/my-orders/${order.id}`}>
-              <OrdersCard key={index} totalPrice={order.totalPrice} totalProducts={order.totalProducts} />
+          context.order.map((order, index) => (
+            <Link key={index} to={`/my-orders/${index}`}>
+              <OrdersCard totalPrice={order.totalPrice} totalProducts={order.totalProducts} />
             </Link>
-
-          })
+          ))
         }
       </Layout>
   );

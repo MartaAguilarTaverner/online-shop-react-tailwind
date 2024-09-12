@@ -38,7 +38,7 @@ const handleCheckOut = () => {
       <div className='flex justify-between items-center mt-2 mr-3 ml-3'>
         <h2 className='font-medium text-xl'>My Order</h2>
         <button className='cursor-pointer' onClick={() => context.closeCheckoutSideMenu()}>
-          <XCircleIcon className='h-7 w-7 text-violet-700'></XCircleIcon>
+          <XCircleIcon className='h-7 w-7 text-violet-700 cursor-pointer'></XCircleIcon>
         </button>
       </div>
       <div>

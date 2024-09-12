@@ -1,4 +1,6 @@
-import { useState, useEffect, useRef } from 'react';
+import { useContext } from 'react';
+import { ShoppingCartContext } from '../../Context'
+
 
 import Layout from '../../Components/Layout';
 import Card from '../../Components/Card';
@@ -7,38 +9,16 @@ import ProductDetail from '../../Components/ProductDetail';
 import './home.css';
 
 function Home() {
-  const [items, setItems] = useState([]);
-  const dataFetchRef = useRef(false);
-
-  //TODO FAKESTOREAPI
-  const fetchProducts = async () => {
-    const response = await fetch('https://fakestoreapi.com/products');
-    const data = await response.json();
-
-    setItems(data);
-  };
-
-  //TODO PLATZIFAKESTOREAPI
-  /*const fetchProducts = async () => {
-    const response = await fetch('https://api.escuelajs.co/api/v1/products');
-    const data = await response.json();
-
-    setItems(data);
-  };*/
-
-  useEffect(() => {
-    if (!dataFetchRef.current) {
-      dataFetchRef.current = true;
-
-      fetchProducts();
-    }
-  }, [])
+  const context = useContext(ShoppingCartContext)
 
   return (
       <Layout>
+        <div className=' mb-4'>
+            <input className='font-normal text-lg w-80 border border-violet-700 rounded-lg py-1 px-2' type='text' placeholder='Search a product...' />
+          </div>
         <div className="grid grid-cols-4 w-full max-w-screen-lg">
           {
-            items?.map((item) => (
+            context.items?.map((item) => (
               <Card key={item.id} item={item} />
             ))
           }

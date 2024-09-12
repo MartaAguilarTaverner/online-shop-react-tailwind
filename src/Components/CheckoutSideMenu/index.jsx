@@ -24,7 +24,7 @@ const handleCheckOut = () => {
   const orderToAdd = {
     date: '01.02.2024',
     products: context.shoppingCartProducts,
-    totalProducts:context.shoppingCartProducts.lenght,
+    totalProducts:context.shoppingCartProducts.length,
     totalPrice: totalPrice(context.shoppingCartProducts)
   }
   context.setOrder([...context.order, orderToAdd])

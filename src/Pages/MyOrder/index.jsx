@@ -13,12 +13,16 @@ import './myOrder.css';
 
 function MyOrder() {
   const context = useContext(ShoppingCartContext);
+  const currentPath = window.location.pathname
+  let index = currentPath.substring(currentPath.lastIndexOf('/') + 1)
 
-  console.log(context.order.slice(-1))
+  if (index === 'last') {
+    index = context?.order.length - 1
+  }
 
   return (
       <Layout>
-        <div className='flex items-center justify-between w-80 '>
+        <div className='flex items-center justify-between w-80 mb-3 '>
           <Link to='/my-orders' className='left-0'>
             <ArrowLeftCircleIcon className='h-7 w-7 text-violet-700 cursor-pointer'></ArrowLeftCircleIcon>
           </Link>
@@ -27,12 +31,8 @@ function MyOrder() {
           </div>
         </div>
         <div className='flex flex-col w-80 '>
-
           {
-            context.order && context.order.length > 0 ? context.order.slice(-1)[0].products.map( product => (
-              <OrderCard key={product.id} id={product.id} title={product.title} image={product.image} price={product.price} />
-            ))
-            : <p className='flex justify-center m-4'>There are no products in the order.</p>
+            context.order?.[index]?.products.map(product => <OrderCard key={product.id} id={product.id} title={product.title} image={product.image} price={product.price} />)
           }
       </div >
       </Layout>

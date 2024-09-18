@@ -46,6 +46,13 @@ export const  ShoppingCartProvider = ({children}) => {
     }
   }, [])
 
+  //GetProductsByTitle
+  const [searchByTitle, setSearchByTitle] = useState('');
+
+  const Search = (event) => {
+    setSearchByTitle(event.target.value)
+  }
+
 
 
 
@@ -67,7 +74,9 @@ export const  ShoppingCartProvider = ({children}) => {
       order,
       setOrder,
       items,
-      setItems
+      setItems,
+      searchByTitle,
+      Search
     }}>
       {children}
     </ShoppingCartContext.Provider>

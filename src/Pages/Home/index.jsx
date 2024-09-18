@@ -10,11 +10,16 @@ import './home.css';
 
 function Home() {
   const context = useContext(ShoppingCartContext)
+  console.log(context.searchByTitle)
 
   return (
       <Layout>
         <div className=' mb-4'>
-            <input className='font-normal text-lg w-80 border border-violet-700 rounded-lg py-1 px-2' type='text' placeholder='Search a product...' />
+            <input
+            className='font-normal text-lg w-80 border border-violet-700 rounded-lg py-1 px-2 focus:outline-none'
+            type='text'
+            placeholder='Search a product...'
+            onChange={context.Search}/>
           </div>
         <div className="grid grid-cols-4 w-full max-w-screen-lg">
           {

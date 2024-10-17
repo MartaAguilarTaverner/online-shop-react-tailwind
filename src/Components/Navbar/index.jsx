@@ -22,6 +22,7 @@ const NavBar = () => {
           <NavLink
             to='/'
             id='word-navbar'
+            onClick={() => context.setSearchByCategory()}
             className={({ isActive}) =>
               isActive ? activeStyle : undefined}>
             All
@@ -31,6 +32,7 @@ const NavBar = () => {
           <NavLink
             to='/men'
             id='word-navbar'
+            onClick={() => context.setSearchByCategory('men')}
             className={({ isActive}) =>
               isActive ? activeStyle : undefined}>
             Men
@@ -40,6 +42,7 @@ const NavBar = () => {
           <NavLink
             to='/women'
             id='word-navbar'
+            onClick={() => context.setSearchByCategory('women')}
             className={({ isActive}) =>
               isActive ? activeStyle : undefined}>
             Women
@@ -49,6 +52,7 @@ const NavBar = () => {
           <NavLink
             to='/jewelry'
             id='word-navbar'
+            onClick={() => context.setSearchByCategory('jewelery')}
             className={({ isActive}) =>
               isActive ? activeStyle : undefined}>
             Jewelry
@@ -58,6 +62,7 @@ const NavBar = () => {
           <NavLink
             to='/electronics'
             id='word-navbar'
+            onClick={() => context.setSearchByCategory('electronics')}
             className={({ isActive}) =>
               isActive ? activeStyle : undefined}>
             Electronics

@@ -38,11 +38,16 @@ export const  ShoppingCartProvider = ({children}) => {
 
     setItems(data);
   };
+
   useEffect(() => {
     if (!dataFetchRef.current) {
       dataFetchRef.current = true;
 
       fetchProducts();
+    }
+
+    return () => {
+      dataFetchRef.current = null
     }
   }, [])
 
@@ -63,7 +68,8 @@ export const  ShoppingCartProvider = ({children}) => {
     if(searchByTitle) setFilteredItems(filteredItemsByTitle(items, searchByTitle))
   }, [items, searchByTitle])
 
-
+  //GetProductsByCategory
+  const[searchByCategory, setSearchByCategory] = useState('')
 
 
   return (
@@ -87,7 +93,8 @@ export const  ShoppingCartProvider = ({children}) => {
       searchByTitle,
       search,
       filteredItems,
-
+      searchByCategory,
+      setSearchByCategory
     }}>
       {children}
     </ShoppingCartContext.Provider>

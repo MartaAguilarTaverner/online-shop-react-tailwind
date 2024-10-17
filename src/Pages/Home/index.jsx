@@ -8,44 +8,23 @@ import ProductDetail from '../../Components/ProductDetail';
 
 import './home.css';
 
+const renderItemsToCard = (itemsToRender) => itemsToRender.map(item => <Card key={item.id} item={item} />)
+
+const renderView = (itemsToRender) => {
+  let result = <p>No Results Found</p>
+
+  if (itemsToRender?.length > 0) {
+    result = renderItemsToCard(itemsToRender)
+  }
+
+  return result
+}
+
+
 function Home() {
   const context = useContext(ShoppingCartContext)
 
-  /*
-  const renderView = () => {
-    if(context.searchByTitle?.lenght > 0) {
-      if(context.filteredItems?.length > 0) {
-        return(
-          context.filteredItems?.map(item => (
-            <Card key={item.id} data={item} />
-          ))
-        )
-      } else {
-        return (
-          <div>There are no coincidences</div>
-        )
-      }
-
-    } else {
-      return (
-        context.items?.map((item) => (
-          <Card key={item.id} item={item} />
-        ))
-      )
-    }
-  } */
-
-
-  const renderView = () => {
-    const itemsToRender = context.searchByTitle?.length > 0 ? context.filteredItems : context.items;
-    if (itemsToRender?.length > 0) {
-      return itemsToRender.map(item =>(
-        <Card key={item.id} item={item} />
-      ));
-    } else {
-      return (<p>No Results Found</p>)
-    }
-  }
+  const itemsToRender = context.searchByTitle?.length > 0 ? context.filteredItems : context.items;
 
   return (
       <Layout>
@@ -57,7 +36,7 @@ function Home() {
             onChange={context.search}/>
           </div>
         <div className="grid grid-cols-4 w-full max-w-screen-lg">
-          {renderView()}
+          {renderView(itemsToRender)}
         </div>
         <ProductDetail />
       </Layout>

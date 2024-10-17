@@ -49,10 +49,19 @@ export const  ShoppingCartProvider = ({children}) => {
   //GetProductsByTitle
   const [searchByTitle, setSearchByTitle] = useState('');
 
-  const Search = (event) => {
+  const search = (event) => {
     setSearchByTitle(event.target.value)
   }
+  //GetProductsFiltered
+  const[filteredItems, setFilteredItems] = useState([]);
 
+  const filteredItemsByTitle = (items, searchByTitle) => {
+    return items?.filter(item => item.title.toLowerCase().includes(searchByTitle.toLowerCase()))
+  }
+
+  useEffect(() => {
+    if(searchByTitle) setFilteredItems(filteredItemsByTitle(items, searchByTitle))
+  }, [items, searchByTitle])
 
 
 
@@ -76,7 +85,9 @@ export const  ShoppingCartProvider = ({children}) => {
       items,
       setItems,
       searchByTitle,
-      Search
+      search,
+      filteredItems,
+
     }}>
       {children}
     </ShoppingCartContext.Provider>
@@ -91,26 +102,10 @@ ShoppingCartProvider.propTypes = {
 const [items, setItems] = useState([]);
   const dataFetchRef = useRef(false);
 
-  //TODO FAKESTOREAPI
+
   const fetchProducts = async () => {
     const response = await fetch('https://fakestoreapi.com/products');
     const data = await response.json();
 
     setItems(data);
-  };
-
-  //TODO PLATZIFAKESTOREAPI
-  const fetchProducts = async () => {
-    const response = await fetch('https://api.escuelajs.co/api/v1/products');
-    const data = await response.json();
-
-    setItems(data);
-  };
-
-  useEffect(() => {
-    if (!dataFetchRef.current) {
-      dataFetchRef.current = true;
-
-      fetchProducts();
-    }
-  }, [])*/
+  }; */

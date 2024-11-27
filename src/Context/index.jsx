@@ -71,6 +71,27 @@ export const  ShoppingCartProvider = ({children}) => {
   //GetProductsByCategory
   const[searchByCategory, setSearchByCategory] = useState('')
 
+  const filteredItemsByCategory = ( items, searchByCategory) => {
+    return items?.filter(item => item.category.toLowerCase() === searchByCategory.toLowerCase())
+  }
+
+
+  useEffect(() => {
+    if(searchByCategory) {
+      const filteredItemsCategory = filteredItemsByCategory(items, searchByCategory);
+
+      setFilteredItems(filteredItemsCategory)
+    }
+
+    if(searchByTitle) {
+      const filteredItemsTitle = filteredItemsByTitle(items, searchByTitle);
+
+      setFilteredItems(filteredItemsTitle)
+    }
+  }, [items, searchByTitle, searchByCategory])
+
+
+
 
   return (
     <ShoppingCartContext.Provider value={{
@@ -116,3 +137,18 @@ const [items, setItems] = useState([]);
 
     setItems(data);
   }; */
+
+
+
+      /*useEffect(() => {
+        setFilteredItems(items)
+        if (searchByTitle && searchByCategory) {
+            const categoryItems = filteredItems(items, category, 'category');
+            setFilteredItems(filteredItems(categoryItems, searchByTitle, 'title'));
+        } else {
+            if (searchByTitle)
+                setFilteredItems(filteredItems(items, searchByTitle));
+            if (category)
+                setFilteredItems(filteredItems(items, searchByCategory, 'category'));
+        }
+    }, [filteredItems, searchByTitle, searchByCategory]);*/

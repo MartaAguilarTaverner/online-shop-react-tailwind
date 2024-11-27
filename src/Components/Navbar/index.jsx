@@ -9,12 +9,12 @@ import './navbar.css';
 const NavBar = () => {
   const context = useContext(ShoppingCartContext);
 
-  const activeStyle = 'underline underline-offset-4';
+  const activeStyle = 'underline underline-offset-4' ;
   return (
     <nav className='className flex justify-between items-center fixed z-10 top-0 w-full py-1 px-6 text-sm font-light className'>
       <ul className='flex items-center gap-3'>
         <li className='font-semibold text-lg'>
-          <NavLink to='/'>
+          <NavLink to='/' >
               <img src='../../../public/logo-shop.png' className='img-logo' alt='Shoppy' />
           </NavLink>
         </li>
@@ -32,7 +32,7 @@ const NavBar = () => {
           <NavLink
             to='/men'
             id='word-navbar'
-            onClick={() => context.setSearchByCategory('men')}
+            onClick={() => context.setSearchByCategory(`men's clothing`)}
             className={({ isActive}) =>
               isActive ? activeStyle : undefined}>
             Men
@@ -42,7 +42,7 @@ const NavBar = () => {
           <NavLink
             to='/women'
             id='word-navbar'
-            onClick={() => context.setSearchByCategory('women')}
+            onClick={() => context.setSearchByCategory(`women's clothing`)}
             className={({ isActive}) =>
               isActive ? activeStyle : undefined}>
             Women
@@ -109,3 +109,19 @@ const NavBar = () => {
 };
 
 export default NavBar;
+
+/*
+        {
+            context.categories.map(category => (
+            <li key={category} className="capitalize">
+                <NavLink
+                    to={`/${category}`}
+                    className={({ isActive }) => isActive ? activeStyle : undefined }
+                    onClick={()=>context.setCategory(category)}
+                >
+                    {category}
+                </NavLink>
+            </li>
+            ))
+        }
+*/

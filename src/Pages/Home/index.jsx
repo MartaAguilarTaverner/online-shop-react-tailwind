@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { ShoppingCartContext } from '../../Context'
 
 
@@ -7,6 +7,7 @@ import Card from '../../Components/Card';
 import ProductDetail from '../../Components/ProductDetail';
 
 import './home.css';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const renderItemsToCard = (itemsToRender) => itemsToRender.map(item => <Card key={item.id} item={item} />)
 
@@ -23,8 +24,25 @@ const renderView = (itemsToRender) => {
 
 function Home() {
   const context = useContext(ShoppingCartContext)
+  const route = useLocation();
+  const navigate = useNavigate()
+  const { searchByTitle, searchByCategory, filteredItems, items } = context;
 
-  const itemsToRender = context.searchByTitle?.length > 0 ? context.filteredItems : context.items;
+  const getItemsToRender = () => {
+    let result = items
+
+    if (searchByTitle || searchByCategory) {
+      result = filteredItems
+    }
+
+    return result
+  }
+
+  useEffect(() => {
+    if (route.pathname !== '/') {
+      navigate('/')
+    }
+  }, [])
 
   return (
       <Layout>
@@ -36,7 +54,7 @@ function Home() {
             onChange={context.search}/>
           </div>
         <div className="grid grid-cols-4 w-full max-w-screen-lg">
-          {renderView(itemsToRender)}
+          {renderView(getItemsToRender())}
         </div>
         <ProductDetail />
       </Layout>

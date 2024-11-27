@@ -1,3 +1,4 @@
+
 import { useRoutes, BrowserRouter } from 'react-router-dom';
 
 import { ShoppingCartProvider } from '../../Context';
@@ -15,7 +16,7 @@ import CheckoutSideMenu from '../../Components/CheckoutSideMenu';
 import './App.css';
 
 const AppRoutes = () => {
-  let routes = useRoutes([
+  const routes = useRoutes([
     { path: '/', element: <Home /> },
     { path: '/men', element: <Home /> },
     { path: '/women', element: <Home /> },
@@ -34,7 +35,6 @@ const AppRoutes = () => {
 }
 
 const App = () => {
-
   return (
     <ShoppingCartProvider>
       <BrowserRouter>
